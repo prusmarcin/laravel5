@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(RolesTableSeeder::class);//wazne aby wykonalo sie jako
+        //pierwsze bo dodaje role potem inne tabele korzystaja z tej tabeli
         $this->call(UsersTableSeeder::class);
         $this->call(PagesTableSeeder::class);
     }

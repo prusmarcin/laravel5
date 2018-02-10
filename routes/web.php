@@ -15,7 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('pages', 'PagesController');
+Route::group([
+    'middleware' => 'roles',//uruchamiany middleware o nazwie roles z pliku kernel.php i przekazujemy mu parametr Admin, Moderator
+    'roles' => ['Admin', 'Moderator']
+], function(){
+    Route::resource('pages', 'PagesController');
+});
+
+
 
 Auth::routes();
 
